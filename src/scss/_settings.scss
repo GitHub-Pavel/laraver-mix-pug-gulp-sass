@@ -30,13 +30,14 @@ img, .img {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    display: block;
 }
 
-.wrapper {
+.site-main {
     min-width: 320px;
     max-width: 100vw;
+    width: 100%;
     margin: 0 auto;
-    overflow: hidden;
 }
 
 input,
@@ -48,7 +49,6 @@ button {
 button {
     background: transparent;
     cursor: pointer;
-    padding: 0;
     font-family: inherit;
 }
 
@@ -61,16 +61,25 @@ a {
     font-weight: inherit;
     color: inherit;
     line-height: inherit;
-    text-decoration: underline;
-    &:hover {
-        text-decoration: none;
-    }
+    text-decoration: none;
 }
 
 .table {
     border-collapse: collapse;
     width: 100%;
     border: none;
+}
+
+svg {
+    fill: currentColor;
+}
+
+.sprite {
+    display: none;
+}
+
+.section {
+    padding: var(--section-padding) 0;
 }
 
 /*
@@ -90,8 +99,33 @@ html {
  */
 
 body {
-    font-family: sans-serif;
     color: var(--black);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+
+    &.loading {
+        #preloader {
+            opacity: 1;
+            pointer-events: all;
+        }
+    }
+}
+
+#preloader {
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999;
+    background: url(../img/loader.svg) center center no-repeat var(--green);
+    background-size: 120px;
+    transition: opacity .2s ease-in-out;
 }
 
 /*
@@ -101,9 +135,9 @@ body {
  */
 
 .container {
-    max-width: calc( var(--con-width) + var(--con-side) * 2 );
-    padding-right: var(--con-side);
-    padding-left: var(--con-side);
+    max-width: calc( var(--container-width) + var(--container-side-padding) * 2 );
+    padding-right: var(--container-side-padding);
+    padding-left: var(--container-side-padding);
     margin: 0 auto;
 }
 
@@ -112,17 +146,28 @@ body {
     gap: var(--column-gap);
 
     @include grid((
-        'none', 
-        'less', 
-        'xx', 
-        'xs', 
-        'sm', 
-        'md', 
-        'lg', 
-        'xlg', 
-        'xl', 
-        'xl'
+        ( 'none', 'none' ), 
+        ( $less, 'less' ), 
+        ( $xx, 'xx' ), 
+        ( $xs, 'xs' ), 
+        ( $sm, 'sm' ), 
+        ( $md, 'md' ), 
+        ( $lg, 'lg' ), 
+        ( $xlg, 'xld' ), 
+        ( $xl, 'xl' )
     ));
+
+    &--nogap {
+        gap: 0px;
+    }
+
+    &--justify-center {
+        justify-content: center;
+    }
+
+    &--align-center {
+        align-items: center;
+    }
 }
 
 /*

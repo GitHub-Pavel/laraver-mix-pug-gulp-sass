@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const sortCSSmq = require('sort-css-media-queries');
 
 const path = require('path');
 const {
@@ -19,7 +20,9 @@ mix.sass(
   paths.dist + '/css',
   {},
   [
-    require('css-mqpacker'),
+    require('css-mqpacker')({
+      sort: sortCSSmq
+    }),
     require('cssnano')({
       preset: [
         'default', 
@@ -38,8 +41,10 @@ mix.sass(
 mix.browserSync({
   proxy: parentDir,
   files: [
-    paths.dist + '/css/main.css',
+    paths.dist + '/css/styles.css',
     paths.dist + '/js/main.js',
-    paths.dist + '/**/*.html'
+    paths.dist + '/**/*.html',
+    paths.dist + '/img/**/*',
+    paths.dist + '/fonts/**/*'
   ]
 });

@@ -1,11 +1,11 @@
 @font-face {
 	font-family: "<%= fontName %>";
-	src: url('/fonts/<%= fontPath %><%= fontName %>.eot<%= cacheBusterQueryString %>');
-	src: url('/fonts/<%= fontPath %><%= fontName %>.eot?<%= cacheBuster %>#iefix') format('eot'),
-		url('/fonts/<%= fontPath %><%= fontName %>.woff2<%= cacheBusterQueryString %>') format('woff2'),
-		url('/fonts/<%= fontPath %><%= fontName %>.woff<%= cacheBusterQueryString %>') format('woff'),
-		url('/fonts/<%= fontPath %><%= fontName %>.ttf<%= cacheBusterQueryString %>') format('truetype'),
-		url('/fonts/<%= fontPath %><%= fontName %>.svg<%= cacheBusterQueryString %>#<%= fontName %>') format('svg');
+	src: url('../fonts/fontIcons/<%= fontName %>.eot<%= cacheBusterQueryString %>');
+	src: url('../fonts/fontIcons/<%= fontName %>.eot?<%= cacheBuster %>#iefix') format('eot'),
+		url('../fonts/fontIcons/<%= fontName %>.woff2<%= cacheBusterQueryString %>') format('woff2'),
+		url('../fonts/fontIcons/<%= fontName %>.woff<%= cacheBusterQueryString %>') format('woff'),
+		url('../fonts/fontIcons/<%= fontName %>.ttf<%= cacheBusterQueryString %>') format('truetype'),
+		url('../fonts/fontIcons/<%= fontName %>.svg<%= cacheBusterQueryString %>#<%= fontName %>') format('svg');
 }
 
 @mixin <%= cssClass%>-styles {

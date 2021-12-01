@@ -1,22 +1,21 @@
  .text {
+  font-size: 18px;
+  font-weight: $normal;
+
   &-small {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   &-big {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   &-bold {
     font-weight: $bold;
   }
-  
-  &-light {
-    font-weight: $light;
-  }
-  
-  &-italic {
-    font-style: italic;
+
+  &-medium {
+    font-weight: $medium;
   }
 
   &-center {

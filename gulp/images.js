@@ -12,7 +12,7 @@ const imagemin = require('gulp-imagemin');
 
 // Minify and cache images
 const images = () => {
-  return gulp.src( paths.src + '/img/*' )
+  return gulp.src( paths.src + '/img/**/*' )
     .pipe(cache(imagemin([
       imagemin.gifsicle({interlaced: true}),
       imagemin.mozjpeg({quality: 75, progressive: true}),

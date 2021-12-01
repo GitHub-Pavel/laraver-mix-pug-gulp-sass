@@ -102,7 +102,7 @@ const styles = () => {
            */
           fontname = fontname[0];
           if (c_fontname != fontname && fontname != 'icons') {
-            fs.appendFile( paths.src + '/scss/_fonts.scss', '@include font("' + name + '", "' + fontname + '", "' + weight + '", "' + style + '");\r\n', cb);
+            fs.appendFile( paths.src + '/scss/_fonts.scss', '@include font("' + name + '", "' + fontname + '", ' + weight + ', "' + style + '");\r\n', cb);
           }
           c_fontname = fontname;
         }

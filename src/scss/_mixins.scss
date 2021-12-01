@@ -8,13 +8,13 @@
     @font-face {
         font-family: $font_name;
         font-display: swap;
-        src: url("../../dist/fonts/#{$file_name}.eot");
+        src: url("../fonts/#{$file_name}.eot");
         src: local($font_name),
              local($file_name),
-             url('../../dist/fonts/#{$file_name}.woff2') format('woff2'),
-             url('../../dist/fonts/#{$file_name}.woff') format('woff'),
-             url('../../dist/fonts/#{$file_name}.eot?#iefix') format('eot'),
-             url('../../dist/fonts/#{$file_name}.ttf') format('truetype');
+             url('../fonts/#{$file_name}.woff2') format('woff2'),
+             url('../fonts/#{$file_name}.woff') format('woff'),
+             url('../fonts/#{$file_name}.eot?#iefix') format('eot'),
+             url('../fonts/#{$file_name}.ttf') format('truetype');
         font-weight: $weight;
         font-style: $style;
     }
@@ -43,15 +43,18 @@
     $colArray: 1,2,3,4,6,12;
 
     @each $screen in $screens {
+        $first_child: nth($screen, 1);
+        $second_child: nth($screen, 2);
+
         @each $columns in $colArray {
-            @if $screen == 'none' {
+            @if $first_child == 'none' {
                 &--#{$columns} {
                     grid-template-columns: repeat($columns, 1fr);
                 }
             }
             @else {
-                &--#{$screen}-#{$columns} {
-                    @media (max-width: var(--#{$screen})) {
+                &--#{$second_child}-#{$columns} {
+                    @media (max-width: #{$first_child}) {
                         grid-template-columns: repeat($columns, 1fr);
                     }
                 }

@@ -15,9 +15,11 @@ const fonts = require('./gulp/fonts');
  * And exclude _icons.scss in main.scss file
  * Else if you need icons font use module "icons"
  */
-const icons = require('./gulp/icons');
+const icons = require('./gulp/sprite');
 const images = require('./gulp/images');
 const pug2html = require('./gulp/pug');
+const minifyJS = require('./gulp/minify');
+const favicon = require('./gulp/favicon');
 
 // Watch all files: images, fonts, icons.
 const _watch = () => {
@@ -37,6 +39,10 @@ const _watch = () => {
     paths.src + '/pug/**/*',
     pug2html
   );
+  watch( 
+    paths.dist + '/img/favicon/*',
+    favicon
+  );
 };
 
 // exports
@@ -45,11 +51,14 @@ module.exports = {
   icons,
   images,
   pug2html,
+  favicon,
   build: gulp.parallel(
     fonts,
     icons,
     images,
-    pug2html
+    pug2html,
+    favicon,
+    minifyJS
   )
 };
 module.exports.default = gulp.parallel(
@@ -57,5 +66,6 @@ module.exports.default = gulp.parallel(
   icons,
   images,
   pug2html,
+  favicon,
   _watch
 );

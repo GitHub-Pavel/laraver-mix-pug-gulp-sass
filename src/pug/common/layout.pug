@@ -8,10 +8,12 @@ html(lang="en")
       meta(http-equiv="X-UA-Compatible", content="ie=edge")
       link(rel="shortcut icon", href="img/favicon.png", type="image/x-icon")
       link(rel="stylesheet", href="css/styles.css")
-  body
+  body(data-sprite="img/sprite.svg")
+    #preloader
+
     include /common/header
 
-    .wrapper
+    main.site-main
       block content
 
     include /common/footer
